@@ -1,4 +1,5 @@
 
+import Blogs from "@/components/modules/Blogs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,11 +10,9 @@ export const metadata: Metadata = {
 export default async function BlogsPage() {
 
   return (
-    <div className="py-30 px-4 max-w-7xl mx-auto">
-      <h1 className="text-4xl font-semibold text-gray-700 text-center">
-        💤 This is the all blogs page
-      </h1>
-    </div>
+      <div className="py-6 md:py-16 px-6">
+        <Blogs />
+      </div>
   );
 };
 

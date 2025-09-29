@@ -6,9 +6,9 @@ export default function PublicLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
+    <div className="md:w-[80%] lg:max-w-6xl mx-auto min-h-dvh">
       <Navbar />
-      <main className="min-h-dvh">{children}</main>
-    </>
+      <div>{children}</div>
+    </div>
   );
 }

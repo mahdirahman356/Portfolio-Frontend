@@ -1,4 +1,4 @@
-import { HouseIcon, InboxIcon, SparklesIcon, ZapIcon } from "lucide-react"
+import { Box, FileText, HouseIcon, UserRound } from "lucide-react"
 
 import UserMenu from "@/components/user-menu"
 import { Button } from "@/components/ui/button"
@@ -16,20 +16,20 @@ import {
 
 // Navigation links array
 const navigationLinks = [
-  { href: "/", label: "Home", icon: HouseIcon, active: true },
-  { href: "/about", label: "About", icon: InboxIcon },
-  { href: "/projects", label: "Projects", icon: ZapIcon },
-  { href: "/blogs", label: "blogs", icon: ZapIcon },
+  { href: "/", label: "Home", icon: HouseIcon },
+  { href: "/about", label: "About", icon: UserRound },
+  { href: "/blogs", label: "blogs", icon: FileText },
+  { href: "/projects", label: "Projects", icon: Box },
 ]
 
 export default function Navbar() {
   return (
-    <header className="px-4 md:px-6">
+    <header className="px-6">
       <div className="flex h-16 items-center justify-between gap-4">
         {/*  Logo */}
-        <div className="flex-1">
-          <a href="#" className="text-primary hover:text-primary/90 font-bold text-xl hidden md:flex gap-2">
-            <span className="text-[#4D869C]">Mahdi&apos;s</span> Protfolio
+        <div className="md:flex-1">
+          <a href="#" className="hover:text-primary/90 font-bold text-xl hidden md:flex gap-2">
+            <span className="text-primary">Mahdi&apos;s</span> <span> Protfolio</span>
           </a>
         </div>
 
@@ -38,15 +38,13 @@ export default function Navbar() {
           {/* Mobile menu trigger */}
           <Popover>
             <PopoverTrigger asChild>
-              <Button
-                className="group size-8 md:hidden"
-                variant="ghost"
-                size="icon"
+              <span
+                className="group md:hidden"
               >
                 <svg
                   className="pointer-events-none"
-                  width={16}
-                  height={16}
+                  width={20}
+                  height={20}
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -68,7 +66,7 @@ export default function Navbar() {
                     className="origin-center translate-y-[7px] transition-all duration-300 ease-[cubic-bezier(.5,.85,.25,1.1)] group-aria-expanded:translate-y-0 group-aria-expanded:rotate-[135deg]"
                   />
                 </svg>
-              </Button>
+              </span>
             </PopoverTrigger>
             <PopoverContent align="start" className="w-36 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
@@ -80,7 +78,6 @@ export default function Navbar() {
                         <NavigationMenuLink
                           href={link.href}
                           className="flex-row items-center gap-2 py-1.5"
-                          active={link.active}
                         >
                           <Icon
                             size={16}
@@ -104,7 +101,6 @@ export default function Navbar() {
                 return (
                   <NavigationMenuItem key={index}>
                     <NavigationMenuLink
-                      active={link.active}
                       href={link.href}
                       className="text-foreground hover:text-primary flex-row items-center gap-2 py-1.5 font-medium"
                     >
