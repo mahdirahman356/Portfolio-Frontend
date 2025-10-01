@@ -1,13 +1,14 @@
+import BlogDetailsCard from "@/components/modules/BlogDetailsCard";
 
 const BlogDetailsPage = async ({ params }: { params: Promise<{ blogId: string }> }) => {
     
-    console.log(params)
+    const {blogId} = await params
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${blogId}`)
+    const blog = await res.json()
 
     return (
-        <div className="py-30 px-4 max-w-7xl mx-auto">
-            <h1 className="text-4xl font-semibold text-gray-700 text-center">
-                💤 This is the blogs details page
-            </h1>
+        <div className="py-6 md:py-16 px-6">
+            <BlogDetailsCard blog={blog}/>
         </div>
     );
 };

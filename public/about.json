@@ -1,0 +1,38 @@
+{
+  "name": "Kashim Rahman Mahdi",
+  "title": "Full Stack Web Developer",
+  "contact": {
+    "email": "mahdi.rahman356@gmail.com",
+    "phone": "+8801321375186",
+    "location": "Sylhet, Sunamganj, Mollikpur"
+  },
+  "socials": {
+    "facebook": "https://www.facebook.com/mahdirahman356",
+    "instagram": "https://www.instagram.com/mahdirahman356",
+    "linkedin": "https://www.linkedin.com/in/mahdirahman356",
+    "github": "https://github.com/mahdirahman356"
+  },
+  "about": "Hi! I'm Kashim, a passionate Fullstack Web Developer with experience in building responsive and user-friendly web applications. I specialize in Next.js, React, Node.js, Express.js, and MongoDB. I enjoy turning ideas into real products that solve real-world problems.",
+  "skills": [
+    "HTML",
+    "CSS",
+    "Tailwind CSS",
+    "JavaScript",
+    "Reactjs",
+    "Nextjs",
+    "NextAuth",
+    "Firebase",
+    "TypeScript",
+    "React Hook Form",
+    "Nodejs",
+    "Expressjs",
+    "MongoDB",
+    "Mongoose",
+    "Json Web Token",
+    "PostgreSQL",
+    "Shadcn UI",
+    "Redux",
+    "TanStack Query",
+    "Zod"
+  ]
+}
