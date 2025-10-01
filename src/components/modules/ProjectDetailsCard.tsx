@@ -9,6 +9,13 @@ interface IProps {
 }
 
 const ProjectDetailsCard = ({ project }: IProps) => {
+    
+     if (!project) {
+        return (
+            <div className="py-20 text-center text-muted-foreground">Project not found.</div>
+        );
+    }
+
     return (
         <div className="max-w-xl mx-auto">
             <h1 className="text-4xl font-semibold mb-6">

@@ -3,7 +3,11 @@ import { IProject } from "@/types";
 import { ArrowDown } from "lucide-react";
 
 const ProjectsPage = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+    next: {
+      revalidate: 30
+    }
+  })
   const projects = await res.json()
   return (
     <div className="py-6 md:py-16 px-6">

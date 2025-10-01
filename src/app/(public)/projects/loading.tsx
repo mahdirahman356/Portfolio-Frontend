@@ -1,5 +1,5 @@
 
-const BlogPageLoading = () => {
+const ProjectPageLoading = () => {
     return (
         <div className="flex justify-center items-center min-h-dvh">
             Loading...
@@ -7,4 +7,4 @@ const BlogPageLoading = () => {
     );
 };
 
-export default BlogPageLoading;
+export default ProjectPageLoading;

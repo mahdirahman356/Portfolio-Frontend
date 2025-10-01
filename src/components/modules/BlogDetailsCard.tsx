@@ -8,7 +8,11 @@ interface IProps {
 
 const BlogDetailsCard = ({ blog }: IProps) => {
 
-    console.log(blog)
+    if (!blog) {
+        return (
+            <div className="py-20 text-center text-muted-foreground">Blog not found.</div>
+        );
+    }
 
     return (
         <div className="max-w-xl mx-auto">
