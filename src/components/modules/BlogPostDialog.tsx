@@ -59,6 +59,9 @@ export default function BlogPostDialog() {
         setOpen(false)
         window.location.reload();
       }
+      else if (result?.code === "P2002") {
+        toast.error("Blog with this title already exist", { id: toastId });
+      }
     } catch (err) {
       toast.error("Something went wrong. Please try again.", { id: toastId });
       console.error(err);

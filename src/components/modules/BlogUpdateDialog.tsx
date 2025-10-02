@@ -12,6 +12,7 @@ import { Textarea } from "../ui/textarea"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { FieldValues, useForm } from "react-hook-form"
 import { useEffect, useState } from "react"
+import { toast } from "sonner"
 
 export default function BlogUpdateDialog({ slug }: { slug: string }) {
 
@@ -41,27 +42,31 @@ export default function BlogUpdateDialog({ slug }: { slug: string }) {
     });
 
     const onSubmit = async (values: FieldValues) => {
-        // const toastId = toast.loading("Logging in...");
-
+        const toastId = toast.loading("Loading...");
         try {
-            const slug = values.title.toLowerCase().split(" ").join("-")
+            const udatedSlug = values.title.toLowerCase().split(" ").join("-")
             const updatedBlog = {
                 ...values,
-                slug
+                slug: udatedSlug
             }
 
-            console.log(updatedBlog)
-            setOpen(false)
-            // if (result?.ok) {
-            //     toast.success("Login successful!", { id: toastId });
-            //     window.location.href = "/dashboard";
-            // } else {
-            //     toast.error("Invalid email or password", { id: toastId });
-            // }
-
-
+            const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${slug}`, {
+                method: "PATCH",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(updatedBlog)
+            })
+            const result = await res.json()
+            console.log(result)
+            if (result?.id) {
+                toast.success("Blog updated successful!", { id: toastId });
+                setOpen(false)
+                window.location.reload();
+            }
+            else if (result?.code === "P2002") {
+                toast.error("Blog with this title already exist", { id: toastId });
+            }
         } catch (err) {
-            // toast.error("Something went wrong. Please try again.", { id: toastId });
+            toast.error("Something went wrong. Please try again.", { id: toastId });
             console.error(err);
         }
     }; return (
@@ -74,7 +79,7 @@ export default function BlogUpdateDialog({ slug }: { slug: string }) {
             <DialogContent>
                 <div className="flex flex-col items-center gap-2 mb-6">
                     <DialogHeader>
-                        <DialogTitle className="sm:text-center">Create a New Blog Post</DialogTitle>
+                        <DialogTitle className="sm:text-center">Update Your Blog Post</DialogTitle>
                     </DialogHeader>
                 </div>
                 <Form {...form}>
