@@ -93,7 +93,6 @@ export default function BlogPostDialog() {
                     <Input
                       type="text"
                       placeholder="Title"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>

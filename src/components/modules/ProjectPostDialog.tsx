@@ -105,7 +105,6 @@ export default function ProjectPostDialog() {
                     <Input
                       type="text"
                       placeholder="Title"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>
@@ -138,7 +137,6 @@ export default function ProjectPostDialog() {
                   <FormControl>
                     <Input
                       placeholder="Project Live Link"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>
@@ -156,7 +154,6 @@ export default function ProjectPostDialog() {
                   <FormControl>
                     <Input
                       placeholder="Project Repo Link Link"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>
@@ -174,7 +171,6 @@ export default function ProjectPostDialog() {
                   <FormControl>
                     <Input
                       placeholder="Project Image"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>
@@ -192,7 +188,6 @@ export default function ProjectPostDialog() {
                   <FormControl>
                     <Input
                       placeholder="Features"
-                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>

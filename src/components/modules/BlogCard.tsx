@@ -10,8 +10,8 @@ interface IProps {
 const BlogCard = async ({ blog }: IProps) => {
 
     return (
-        <div>
-            <div className="flex p-3">
+        <div className="p-6 rounded-md shadow-md">
+            <div className="flex">
                 <Image width={100} height={100} className="object-cover object-center w-10 h-10 rounded-full" src={"/user-image.webp"} alt="" />
 
                 <div className="mx-4">

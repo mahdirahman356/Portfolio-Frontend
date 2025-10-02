@@ -6,6 +6,7 @@ import {
     FormControl,
     FormField,
     FormItem,
+    FormLabel,
     FormMessage,
 } from "@/components/ui/form";
 import Image from "next/image";
@@ -74,6 +75,7 @@ const LoginPage = () => {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel>Email</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="email"
@@ -91,6 +93,7 @@ const LoginPage = () => {
                             name="password"
                             render={({ field }) => (
                                 <FormItem>
+                                    <FormLabel>Password</FormLabel>
                                     <FormControl>
                                         <Input
                                             type="password"
