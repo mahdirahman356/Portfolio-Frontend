@@ -1,12 +1,7 @@
-import { Metadata } from "next";
 import { ArrowDown } from "lucide-react";
 import BlogCard from "@/components/modules/BlogCard";
 import { IBlog } from "@/types";
 
-export const metadata: Metadata = {
-  title: "All Blogs | Next Blog",
-  description: "Browse All Blog Posts"
-}
 
 export default async function BlogsPage() {
 

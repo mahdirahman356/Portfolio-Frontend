@@ -28,7 +28,7 @@ export default function Navbar() {
       <div className="flex h-16 items-center justify-between gap-4">
         {/*  Logo */}
         <div className="md:flex-1">
-          <a href="#" className="hover:text-primary/90 font-bold text-xl hidden md:flex gap-2">
+          <a href="#" className="font-bold text-xl hidden md:flex gap-2">
             <span className="text-primary">Mahdi&apos;s</span> <span> Protfolio</span>
           </a>
         </div>

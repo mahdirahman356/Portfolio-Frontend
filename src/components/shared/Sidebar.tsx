@@ -1,44 +1,81 @@
-"use client";
+import * as React from "react"
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Home, PlusCircle, LogOut } from "lucide-react";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarGroupLabel,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarRail,
+} from "@/components/ui/sidebar"
+import Link from "next/link"
+import { Box, FileText, HouseIcon } from "lucide-react"
 
-export default function Sidebar() {
+// This is sample data.
+const data = {
+  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
+  navMain: [
+    {
+      title: "Manage Your Content",
+      url: "#",
+      items: [
+        {
+          title: "Home",
+          url: "/",
+          icon: HouseIcon,
+        },
+        {
+          title: "Manage Blog",
+          url: "/dashboard/manage-blogs",
+          icon: FileText,
+        },
+        {
+          title: "Manage Projects",
+          url: "/dashboard/manage-projects",
+          icon: Box
+        },
+      ],
+    }
+  ],
+}
 
+export function DashboardSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
-    <aside className="flex h-screen w-64 flex-col border-r bg-black text-white">
-      {/* Top navigation */}
-      <nav className="flex-1 space-y-2 p-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black"
-        >
-          <Home className="h-4 w-4" />
-          Home
+    <Sidebar {...props}>
+      <SidebarHeader className="mt-3.5">
+        <Link href="/">
+          <h3 className="font-bold text-xl px-2">
+            <span className="text-primary">Mahdi&apos;s</span> <span> Protfolio</span>
+          </h3>
         </Link>
-
-        <Link
-          href="/dashboard/manage-blog"
-          className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium hover:bg-gray-100 hover:text-black"
-        >
-          <PlusCircle className="h-4 w-4" />
-          Create Blog
-        </Link>
-      </nav>
-
-      {/* Bottom action */}
-      <div className="p-4 border-t border-gray-500">
-          <Button
-            variant="destructive"
-            className="w-full justify-start gap-2 cursor-pointer"
-           
-          >
-
-            <LogOut className="h-4 w-4" />
-            Logout
-          </Button>
-      </div>
-    </aside>
-  );
+      </SidebarHeader>
+      <SidebarContent>
+        {/* We create a SidebarGroup for each parent. */}
+        {data?.navMain?.map((item) => (
+          <SidebarGroup key={item.title}>
+            <SidebarGroupLabel className="uppercase">{item.title}</SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {item.items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <Link href={item.url}>
+                        {item.icon && <item.icon className="w-16 h-16" />}
+                        {item.title}
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        ))}
+      </SidebarContent>
+      <SidebarRail />
+    </Sidebar>
+  )
 }
