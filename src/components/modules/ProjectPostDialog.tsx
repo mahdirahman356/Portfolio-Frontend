@@ -21,16 +21,32 @@ const projectPostSchema = z.object({
     .nonempty("Title is required"),
   description: z
     .string()
-    .nonempty("Content is required")
+    .nonempty("Content is required"),
+  liveLink: z
+    .string()
+    .nonempty("Project Live Link is required"),
+  repoLink: z
+    .string()
+    .nonempty("Project Repo Link is required"),
+  thumbnail: z
+    .string()
+    .nonempty("Image is required"),
+  features: z
+    .string()
+    .nonempty("Features is required"),
 })
 
-export default function ProjectDialog() {
+export default function ProjectPostDialog() {
 
   const form = useForm<z.infer<typeof projectPostSchema>>({
     resolver: zodResolver(projectPostSchema),
     defaultValues: {
       title: "",
-      description: ""
+      description: "",
+      liveLink: "",
+      repoLink: "",
+      thumbnail: "",
+      features: ""
     }
   });
 
@@ -41,7 +57,13 @@ export default function ProjectDialog() {
       const slug = values.title.toLowerCase().split(" ").join("-")
       const project = {
         ...values,
-        slug
+        slug,
+        features:
+          values.features
+            .toString()
+            .split(",")
+            .map((tag: string) => tag.trim()),
+
       }
 
       console.log(project)
@@ -73,7 +95,7 @@ export default function ProjectDialog() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6 w-full max-w-md"
           >
-            {/* Email */}
+            {/* title */}
             <FormField
               control={form.control}
               name="title"
@@ -91,7 +113,7 @@ export default function ProjectDialog() {
                 </FormItem>
               )}
             />
-            {/* Password */}
+            {/* description */}
             <FormField
               control={form.control}
               name="description"
@@ -100,6 +122,77 @@ export default function ProjectDialog() {
                   <FormControl>
                     <Textarea
                       placeholder="Description"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            {/* live link */}
+            <FormField
+              control={form.control}
+              name="liveLink"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Project Live Link"
+                      className="rounded-md"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* repo link */}
+            <FormField
+              control={form.control}
+              name="repoLink"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Project Repo Link Link"
+                      className="rounded-md"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* thumbnail */}
+            <FormField
+              control={form.control}
+              name="thumbnail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Project Image"
+                      className="rounded-md"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* features */}
+            <FormField
+              control={form.control}
+              name="features"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                      placeholder="Features"
+                      className="rounded-md"
                       {...field}
                     />
                   </FormControl>

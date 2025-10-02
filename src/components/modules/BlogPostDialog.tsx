@@ -10,10 +10,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { PlusIcon } from "lucide-react"
 import { Textarea } from "../ui/textarea"
-import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
 import { FieldValues, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import z from "zod"
+import { toast } from "sonner"
+import { useState } from "react"
 
 const blogPostSchema = z.object({
   title: z
@@ -24,7 +26,9 @@ const blogPostSchema = z.object({
     .nonempty("Content is required")
 })
 
-export default function BlogDialog() {
+export default function BlogPostDialog() {
+
+  const [open, setOpen] = useState(false)
 
   const form = useForm<z.infer<typeof blogPostSchema>>({
     resolver: zodResolver(blogPostSchema),
@@ -35,7 +39,7 @@ export default function BlogDialog() {
   });
 
   const onSubmit = async (values: FieldValues) => {
-    // const toastId = toast.loading("Logging in...");
+    const toastId = toast.loading("Loading...");
 
     try {
       const slug = values.title.toLowerCase().split(" ").join("-")
@@ -44,21 +48,23 @@ export default function BlogDialog() {
         slug
       }
 
-      console.log(blog)
-      // if (result?.ok) {
-      //     toast.success("Login successful!", { id: toastId });
-      //     window.location.href = "/dashboard";
-      // } else {
-      //     toast.error("Invalid email or password", { id: toastId });
-      // }
-
-
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(blog)
+      })
+      const result = await res.json()
+      if (result?.id) {
+        toast.success("Blog created successful!", { id: toastId });
+        setOpen(false)
+        window.location.reload();
+      }
     } catch (err) {
-      // toast.error("Something went wrong. Please try again.", { id: toastId });
+      toast.error("Something went wrong. Please try again.", { id: toastId });
       console.error(err);
     }
   }; return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="p-3 bg-primary rounded-full"><PlusIcon size={18} /></Button>
       </DialogTrigger>
@@ -73,12 +79,13 @@ export default function BlogDialog() {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-6 w-full max-w-md"
           >
-            {/* Email */}
+            {/* title */}
             <FormField
               control={form.control}
               name="title"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Title</FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -91,12 +98,13 @@ export default function BlogDialog() {
                 </FormItem>
               )}
             />
-            {/* Password */}
+            {/* Content */}
             <FormField
               control={form.control}
               name="content"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Content</FormLabel>
                   <FormControl>
                     <Textarea
                       placeholder="Content"

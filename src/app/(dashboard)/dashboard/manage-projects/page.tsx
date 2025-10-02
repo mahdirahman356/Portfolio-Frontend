@@ -3,7 +3,7 @@ import { IProject } from "@/types";
 import React from "react";
 import { format } from "date-fns";
 import Link from "next/link";
-import ProjectDialog from "@/components/modules/ProjectDialog";
+import ProjectPostDialog from "@/components/modules/ProjectPostDialog";
 
 
 const ManageProjects = async () => {
@@ -18,7 +18,7 @@ const ManageProjects = async () => {
                 </div>
                 <div className="flex items-center gap-2">
                     <span className="uppercase text-sm tracking-[0.3em]">Add Project</span>
-                    <ProjectDialog />
+                    <ProjectPostDialog />
                 </div>
             </div>
             <Table className="bg-primary-foreground rounded-md">
