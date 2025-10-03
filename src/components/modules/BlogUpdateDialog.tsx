@@ -17,13 +17,11 @@ import { toast } from "sonner"
 export default function BlogUpdateDialog({ slug }: { slug: string }) {
 
     const [open, setOpen] = useState(false)
-    const [blog, setBlog] = useState(null)
-
+    
     useEffect(() => {
         async function fetchPosts() {
             const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog/${slug}`)
             const data = await res.json()
-            setBlog(data)
             form.reset({
                 title: data.title || "",
                 content: data.content || ""
@@ -32,7 +30,7 @@ export default function BlogUpdateDialog({ slug }: { slug: string }) {
         fetchPosts()
     }, [slug])
 
-    console.log(blog)
+    // console.log(blog)
 
     const form = useForm({
         defaultValues: {

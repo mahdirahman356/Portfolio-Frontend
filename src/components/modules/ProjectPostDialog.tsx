@@ -14,6 +14,8 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from "../ui/form"
 import { FieldValues, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import z from "zod"
+import { toast } from "sonner"
+import { useState } from "react"
 
 const projectPostSchema = z.object({
   title: z
@@ -37,6 +39,7 @@ const projectPostSchema = z.object({
 })
 
 export default function ProjectPostDialog() {
+  const [open, setOpen] = useState(false)
 
   const form = useForm<z.infer<typeof projectPostSchema>>({
     resolver: zodResolver(projectPostSchema),
@@ -51,7 +54,7 @@ export default function ProjectPostDialog() {
   });
 
   const onSubmit = async (values: FieldValues) => {
-    // const toastId = toast.loading("Logging in...");
+    const toastId = toast.loading("Loading...");
 
     try {
       const slug = values.title.toLowerCase().split(" ").join("-")
@@ -63,24 +66,31 @@ export default function ProjectPostDialog() {
             .toString()
             .split(",")
             .map((tag: string) => tag.trim()),
-
       }
 
       console.log(project)
-      // if (result?.ok) {
-      //     toast.success("Login successful!", { id: toastId });
-      //     window.location.href = "/dashboard";
-      // } else {
-      //     toast.error("Invalid email or password", { id: toastId });
-      // }
-
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+        method: "POST",
+        headers: { "Content-type": "application/json" },
+        body: JSON.stringify(project)
+      })
+      const result = await res.json()
+      console.log(result)
+      if (result?.id) {
+        toast.success("Project created successful!", { id: toastId });
+        setOpen(false)
+        window.location.reload();
+      }
+      else if (result?.code === "P2002") {
+        toast.error("Project with this title already exist", { id: toastId });
+      }
 
     } catch (err) {
-      // toast.error("Something went wrong. Please try again.", { id: toastId });
+      toast.error("Something went wrong. Please try again.", { id: toastId });
       console.error(err);
     }
   }; return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button className="p-3 bg-primary rounded-full"><PlusIcon size={18} /></Button>
       </DialogTrigger>
