@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio
 
-## Getting Started
+A modern and responsive **Portfolio Website** built with **Next.js, Express.js, Prisma and Tailwind CSS**.  
+This project showcases personal projects, blogs, and an "About Me" section, with a secure **owner-only dashboard** for managing content.  
 
-First, run the development server:
+---
 
+## Live Demo
+
+- **Frontend:** [Live Link](https://your-frontend-link.com)  
+- **Backend API:** [Live Link](https://your-backend-link.com)  
+- **Demo Video:** [Video Link](https://your-demo-video-link.com)
+
+---
+
+## Project Overview
+
+This project is designed to be both **public-facing (blogs, projects, about me)** and **owner-restricted (dashboard for content management)**.  
+
+###  Core Features
+- **Authentication & Authorization**
+  - Secure login system using JWT + bcrypt.
+  - Owner-only dashboard access.
+- **Dashboard**
+  - Manage blogs and projects in one place.
+- **Blog Management**
+  - Create, Read, Update, Delete (CRUD) blogs (owner only).
+  - Public users can view all blogs and individual posts.
+  - ISR for dynamic fetching of blogs and details.
+- **About Me Section**
+  - Displays static info like name, contact, skills, and work experience.
+  - Optimized with Static Site Generation (SSG).
+- **Project Showcase**
+  - Display personal projects with thumbnails, live links, descriptions, and features.
+  - ISR for fetching/updating project data dynamically.
+- **Responsive UI & UX**
+  - Modern, mobile-first responsive design with Tailwind CSS.
+  - Interactive UI: smooth transitions, skeleton loading, cards, and accessibility.
+
+---
+
+##  Tech Stack
+
+**Frontend**
+- [Next.js](https://nextjs.org/) (with TypeScript)
+- [Tailwind CSS](https://tailwindcss.com/)
+- ISR + SSG for blogs, projects, and about me
+
+**Backend**
+- [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/)
+- Database: **PostgreSQL + Prisma**
+- Authentication: **JWT + bcrypt**
+- Admin seeding for initial secure login
+
+---
+
+
+##  Demo Credentials
+
+Use the following credentials to log in as an admin
+to explore
+
+**Admin**
+- Email: owner@gmail.com
+- Password: 123456
+
+---
+
+
+## Setup Instructions
+
+### 1. Clone the repos
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+git clone https://github.com/mahdirahman356/Portfolio-Frontend.git
+git clone https://github.com/mahdirahman356/Portfolio-Backend.git
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

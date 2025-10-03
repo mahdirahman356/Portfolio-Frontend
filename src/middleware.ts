@@ -1,4 +1,11 @@
-export { default } from "next-auth/middleware"
+import { withAuth } from "next-auth/middleware";
 
-export const config = { matcher: ["/dashboard/manage-blogs", "/dashboard/manage-projects"] }
+export default withAuth({
+  callbacks: {
+    authorized: ({ token }) => !!token, 
+  },
+});
 
+export const config = {
+  matcher: ["/dashboard/:path*"],
+};

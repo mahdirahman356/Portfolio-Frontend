@@ -9,7 +9,11 @@ import { ProjectDeleteConfirmation } from "@/components/modules/ProjectDeleteCon
 
 
 const ManageProjects = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/project`, {
+        next: {
+            revalidate: 2
+        }
+    })
     const projects = await res.json()
 
     return (
@@ -57,10 +61,10 @@ const ManageProjects = async () => {
                                 </Link>
                             </TableCell>
                             <TableCell >
-                                 <ProjectUpdateDialog slug={item.slug} />
+                                <ProjectUpdateDialog slug={item.slug} />
                             </TableCell>
                             <TableCell >
-                                <ProjectDeleteConfirmation slug={item.slug}/>
+                                <ProjectDeleteConfirmation slug={item.slug} />
                             </TableCell>
                         </TableRow>
                     ))}

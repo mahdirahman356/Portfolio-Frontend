@@ -62,7 +62,7 @@ export default function UserMenu() {
               </DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={() => signOut()}>
+            <DropdownMenuItem onClick={() => signOut({callbackUrl: "/login"})}>
               <LogOutIcon size={16} className="opacity-60" aria-hidden="true" />
               <span>Logout</span>
             </DropdownMenuItem>

@@ -259,7 +259,7 @@ function SidebarTrigger({
   const { toggleSidebar } = useSidebar()
 
   return (
-    <div
+    <button
       onClick={(event) => {
         onClick?.(event)
         toggleSidebar()
@@ -268,7 +268,7 @@ function SidebarTrigger({
     >
       <PanelLeftIcon className="text-muted-foreground"/>
       <span className="sr-only">Toggle Sidebar</span>
-    </div>
+    </button>
   )
 }
 

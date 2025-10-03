@@ -9,7 +9,11 @@ import { BlogDeleteConfirmation } from "@/components/modules/BlogDeleteConfirmat
 
 const ManageBlogs = async () => {
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_API}/blog`, {
+        next: {
+            revalidate: 2
+        }
+    })
     const blogs = await res.json()
 
     return (
@@ -49,7 +53,7 @@ const ManageBlogs = async () => {
                                 <BlogUpdateDialog slug={item.slug} />
                             </TableCell>
                             <TableCell >
-                                <BlogDeleteConfirmation slug={item.slug}/>
+                                <BlogDeleteConfirmation slug={item.slug} />
                             </TableCell>
                         </TableRow>
                     ))}

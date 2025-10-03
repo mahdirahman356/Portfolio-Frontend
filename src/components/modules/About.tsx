@@ -4,9 +4,11 @@ import Link from "next/link";
 import { Key } from "react";
 import { Button } from "../ui/button";
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 const About = async () => {
 
-    const res = await fetch("http://localhost:3000/about.json", {
+    const res = await fetch(`${baseUrl}/about.json`, {
         cache: "force-cache"
     })
     const details = await res.json()
@@ -14,7 +16,7 @@ const About = async () => {
     console.log(details)
 
     return (
-        <div className="space-y-20">
+        <section className="space-y-20">
             <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-between  gap-8">
                 <div className="lg:max-w-sm space-y-6">
                     <div>
@@ -83,7 +85,7 @@ const About = async () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
