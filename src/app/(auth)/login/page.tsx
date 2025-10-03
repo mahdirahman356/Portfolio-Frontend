@@ -47,7 +47,7 @@ const LoginPage = () => {
 
             if (result?.ok) {
                 toast.success("Login successful!", { id: toastId });
-                window.location.href = "/dashboard";
+                window.location.href = "/dashboard/manage-blogs";
             } else {
                 toast.error("Invalid email or password", { id: toastId });
             }

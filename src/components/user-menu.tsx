@@ -55,7 +55,7 @@ export default function UserMenu() {
         </Link>
         {session.status === "authenticated" && (
           <>
-            <Link href={"/dashboard"}>
+            <Link href={"/dashboard/manage-blogs"}>
               <DropdownMenuItem>
                 <LayoutDashboard size={16} className="opacity-60" aria-hidden="true" />
                 <span>Dashboard</span>

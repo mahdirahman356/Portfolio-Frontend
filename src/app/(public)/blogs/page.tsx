@@ -14,7 +14,7 @@ export default async function BlogsPage() {
   console.log(blogs)
 
   return (
-    <div className="py-6 md:py-16 px-6">
+    <section className="py-6 md:py-16 px-6">
       <div className="space-y-20">
         <div className="space-y-10">
           <h1 className="text-2xl md:text-3xl font-bold"><span className="text-primary">Reflections and practical</span> <br /> guides from my <br />web-dev journey </h1>
@@ -30,7 +30,7 @@ export default async function BlogsPage() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

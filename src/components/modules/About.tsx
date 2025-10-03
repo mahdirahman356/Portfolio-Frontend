@@ -14,7 +14,7 @@ const About = async () => {
     console.log(details)
 
     return (
-        <section className="space-y-20">
+        <div className="space-y-20">
             <div className="flex flex-col-reverse lg:flex-row lg:items-center lg:justify-between  gap-8">
                 <div className="lg:max-w-sm space-y-6">
                     <div>
@@ -83,7 +83,7 @@ const About = async () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     );
 };
 

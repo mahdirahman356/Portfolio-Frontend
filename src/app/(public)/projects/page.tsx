@@ -10,7 +10,7 @@ const ProjectsPage = async () => {
   })
   const projects = await res.json()
   return (
-    <div className="py-6 md:py-16 px-6">
+    <section className="py-6 md:py-16 px-6">
       <div className="space-y-20">
         <div className="space-y-10">
           <h1 className="text-2xl md:text-3xl font-bold"><span className="text-primary">A collection of my personal</span> <br /> and professional <br />web development projects.</h1>
@@ -26,7 +26,7 @@ const ProjectsPage = async () => {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

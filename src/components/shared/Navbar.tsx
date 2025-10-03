@@ -24,7 +24,7 @@ const navigationLinks = [
 
 export default function Navbar() {
   return (
-    <header className="px-6">
+    <nav className="px-6">
       <div className="flex h-16 items-center justify-between gap-4">
         {/*  Logo */}
         <div className="md:flex-1">
@@ -123,6 +123,6 @@ export default function Navbar() {
           <UserMenu />
         </div>
       </div>
-    </header>
+    </nav>
   )
 }
