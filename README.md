@@ -7,9 +7,8 @@ This project showcases personal projects, blogs, and an "About Me" section, with
 
 ## Live Demo
 
-- **Frontend:** [Live Link](https://your-frontend-link.com)  
-- **Backend API:** [Live Link](https://your-backend-link.com)  
-- **Demo Video:** [Video Link](https://your-demo-video-link.com)
+- **Frontend:** [Live Link](https://mahdi-portfolio-nine.vercel.app)  
+- **Backend API:** [Live Link](https://portfolio-five-tan-scgkk4cx50.vercel.app)  
 
 ---
 
